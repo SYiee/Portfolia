@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Inseo/Color Box.unity
+- path: Assets/CHERRY/Edit_Object.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
