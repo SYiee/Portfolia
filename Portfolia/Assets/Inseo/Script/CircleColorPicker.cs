@@ -80,4 +80,21 @@ public class CircleColorPicker : MonoBehaviour
 
         }
     }
+
+    private float speed = 3f;
+
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            linkedObject.GetComponent<Transform>().Rotate(0f, -Input.GetAxis("Mouse X") * speed, 0f, Space.World);
+            linkedObject.GetComponent<Transform>().Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);
+        }
+        if (Input.GetMouseButton(1))
+        {
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20);
+            Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            linkedObject.GetComponent<Transform>().position = objPosition;
+        }
+    }
 }
