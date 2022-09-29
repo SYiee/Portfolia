@@ -49,6 +49,9 @@ public class CircleColorPicker : MonoBehaviour
         selectColor();
     }
 
+
+
+
     private Color getColor()
     {
         Vector2 circlePalettePosition = circlePalette.transform.position;
@@ -64,7 +67,7 @@ public class CircleColorPicker : MonoBehaviour
 
         return circularSelectedColor;
     }
-
+    private float speed = 3f;
     private void selectColor()
     {
         Vector3 offset = Input.mousePosition - transform.position;
@@ -72,27 +75,30 @@ public class CircleColorPicker : MonoBehaviour
 
         picker.transform.position = transform.position + diff;
 
-        selectedColor = getColor();
-        MeshRenderer[] mesh = linkedObject.GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer child in mesh)
-        {
-            child.materials[0].color = selectedColor;
+            selectedColor = getColor();
+            MeshRenderer[] mesh = linkedObject.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer child in mesh)
+            {
+                child.materials[0].color = selectedColor;
 
-        }
+            }
+    
     }
 
-    private float speed = 3f;
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        Vector3 offset = Input.mousePosition - transform.position;
+        Vector3 diff = Vector3.ClampMagnitude(offset, paletteCollider.radius);
+
+        if (offset.magnitude > paletteCollider.radius&& Input.GetMouseButton(0))
         {
             linkedObject.GetComponent<Transform>().Rotate(0f, -Input.GetAxis("Mouse X") * speed, 0f, Space.World);
             linkedObject.GetComponent<Transform>().Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);
         }
         if (Input.GetMouseButton(1))
         {
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20);
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
             Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             linkedObject.GetComponent<Transform>().position = objPosition;
         }
