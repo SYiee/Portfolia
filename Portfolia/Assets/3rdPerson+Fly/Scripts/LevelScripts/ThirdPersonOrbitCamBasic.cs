@@ -67,9 +67,16 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
     public bool can_cam_move = true;
     void Update()
     {
-        if (can_cam_move && !Input.GetKey(KeyCode.LeftControl))
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Cursor.visible = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             Cursor.visible = false;
+        }
+        if (can_cam_move && !Input.GetKey(KeyCode.LeftControl))
+        {
             // Get mouse movement to orbit the camera.
             // Mouse:
             angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * horizontalAimingSpeed;
@@ -109,7 +116,6 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 
             cam.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
         }
-        else Cursor.visible = true;
     }
 
 	// Set camera offsets to custom values.
