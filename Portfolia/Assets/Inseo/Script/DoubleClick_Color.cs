@@ -6,7 +6,7 @@ public class DoubleClick_Color : MonoBehaviour
 {
     float interval = 0.25f;
     float doubleClickedTime = -1.0f;
-    bool pickerOnOff = false;
+    public bool pickerOnOff = false;
 
     private void OnMouseUp()
     {
@@ -18,9 +18,7 @@ public class DoubleClick_Color : MonoBehaviour
             {
                 pickerOnOff = true;
                 CircleColorPicker.Instance.gameObject.SetActive(true);
-
                 CircleColorPicker.Instance.linkedObject = this.gameObject;
-
                 ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
                 MoveBehaviour.Instance.can_move = false;
             }
@@ -43,12 +41,12 @@ public class DoubleClick_Color : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (pickerOnOff)
         {
-            CircleColorPicker.Instance.gameObject.transform.position
-                = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2);
+            print(pickerOnOff);
+            CircleColorPicker.Instance.gameObject.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         }
     }
 }

@@ -67,19 +67,19 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
     public bool can_cam_move = true;
     void Update()
     {
-        // Get mouse movement to orbit the camera.
-        // Mouse:
-        angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * horizontalAimingSpeed;
-        angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1, 1) * verticalAimingSpeed;
-        // Joystick:
-        angleH += Mathf.Clamp(Input.GetAxis(XAxis), -1, 1) * 60 * horizontalAimingSpeed * Time.deltaTime;
-        angleV += Mathf.Clamp(Input.GetAxis(YAxis), -1, 1) * 60 * verticalAimingSpeed * Time.deltaTime;
-
-        // Set vertical movement limit.
-        angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticalAngle);
-
         if (can_cam_move && !Input.GetKey(KeyCode.LeftControl))
         {
+            Cursor.visible = false;
+            // Get mouse movement to orbit the camera.
+            // Mouse:
+            angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1) * horizontalAimingSpeed;
+            angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1, 1) * verticalAimingSpeed;
+            // Joystick:
+            angleH += Mathf.Clamp(Input.GetAxis(XAxis), -1, 1) * 60 * horizontalAimingSpeed * Time.deltaTime;
+            angleV += Mathf.Clamp(Input.GetAxis(YAxis), -1, 1) * 60 * verticalAimingSpeed * Time.deltaTime;
+
+            // Set vertical movement limit.
+            angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticalAngle);
             // Set camera orientation.
             Quaternion camYRotation = Quaternion.Euler(0, angleH, 0);
             Quaternion aimRotation = Quaternion.Euler(-angleV, angleH, 0);
@@ -109,6 +109,7 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 
             cam.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
         }
+        else Cursor.visible = true;
     }
 
 	// Set camera offsets to custom values.

@@ -35,8 +35,7 @@ public class CircleColorPicker : MonoBehaviour
         paletteCollider = circlePalette.GetComponent<CircleCollider2D>();
 
         sizeOfPalette = new Vector2(
-            circlePalette.GetComponent<RectTransform>().rect.width,
-            circlePalette.GetComponent<RectTransform>().rect.height);
+            circlePalette.GetComponent<RectTransform>().rect.width, circlePalette.GetComponent<RectTransform>().rect.height);
     }
 
     public void mousePointerDown()
@@ -67,6 +66,7 @@ public class CircleColorPicker : MonoBehaviour
 
         return circularSelectedColor;
     }
+
     private float speed = 3f;
     private void selectColor()
     {
@@ -77,18 +77,17 @@ public class CircleColorPicker : MonoBehaviour
 
             selectedColor = getColor();
             MeshRenderer[] mesh = linkedObject.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer child in mesh)
-            {
-            if (offset.magnitude <= paletteCollider.radius)
+
+        linkedObject.GetComponent<DoubleClick_Color>().pickerOnOff = false;
+        linkedObject = null;
+        foreach (MeshRenderer child in mesh)
             {
                 child.materials[0].color = selectedColor;
-                transform.gameObject.SetActive(false);
                 linkedObject = null;
                 ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
                 MoveBehaviour.Instance.can_move = true;
-            }
-            }
-    
+                transform.gameObject.SetActive(false);
+             }
     }
 
 
@@ -97,7 +96,7 @@ public class CircleColorPicker : MonoBehaviour
         Vector3 offset = Input.mousePosition - transform.position;
         Vector3 diff = Vector3.ClampMagnitude(offset, paletteCollider.radius);
 
-        if (offset.magnitude > paletteCollider.radius&& Input.GetMouseButton(0))
+        if (offset.magnitude > paletteCollider.radius && Input.GetMouseButton(0))
         {
             linkedObject.GetComponent<Transform>().Rotate(0f, -Input.GetAxis("Mouse X") * speed, 0f, Space.World);
             //linkedObject.GetComponent<Transform>().Rotate(-Input.GetAxis("Mouse Y") * speed, 0f, 0f);

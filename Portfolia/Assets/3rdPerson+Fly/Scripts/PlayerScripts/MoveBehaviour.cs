@@ -157,7 +157,6 @@ public class MoveBehaviour : GenericBehaviour
 	// Rotate the player to match correct orientation, according to camera and key pressed.
 	Vector3 Rotating(float horizontal, float vertical)
 	{
-       
 		// Get camera forward direction, without vertical component.
 		Vector3 forward = behaviourManager.playerCamera.TransformDirection(Vector3.forward);
 
