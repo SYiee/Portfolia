@@ -35,7 +35,7 @@ public class Choose_Object : MonoBehaviour
     int objnum;
     int roomnum;
 
-    enum Items { DESK, CHAIR, COMPUTER, FOOD };
+    enum Items { DESK, CHAIR, COMPUTER, FOOD, BIG, CONTROLLER, DESKITEM, FLOEWRPOT};
 
     // Update is called once per frame
     void Update()
