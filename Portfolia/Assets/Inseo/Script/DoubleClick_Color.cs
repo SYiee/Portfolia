@@ -20,6 +20,9 @@ public class DoubleClick_Color : MonoBehaviour
                 CircleColorPicker.Instance.gameObject.SetActive(true);
 
                 CircleColorPicker.Instance.linkedObject = this.gameObject;
+
+                ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
+                MoveBehaviour.Instance.can_move = false;
             }
             else
             {
@@ -29,12 +32,15 @@ public class DoubleClick_Color : MonoBehaviour
                 pickerOnOff = false;
                 CircleColorPicker.Instance.gameObject.SetActive(false);
                 CircleColorPicker.Instance.linkedObject = null;
+                ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
+                MoveBehaviour.Instance.can_move = true;
             }
         }
         else
         {
             doubleClickedTime = Time.time;
         }
+
     }
 
     private void Update()

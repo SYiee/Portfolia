@@ -79,8 +79,14 @@ public class CircleColorPicker : MonoBehaviour
             MeshRenderer[] mesh = linkedObject.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer child in mesh)
             {
+            if (offset.magnitude <= paletteCollider.radius)
+            {
                 child.materials[0].color = selectedColor;
-
+                transform.gameObject.SetActive(false);
+                linkedObject = null;
+                ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
+                MoveBehaviour.Instance.can_move = true;
+            }
             }
     
     }
