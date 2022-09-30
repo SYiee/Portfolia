@@ -28,6 +28,12 @@ public class BasicBehaviour : MonoBehaviour
 	private int groundedBool;                             // Animator variable related to whether or not the player is on the ground.
 	private Vector3 colExtents;                           // Collider extents for ground test. 
 
+	//Anim
+	private bool isGreet = false;
+	private bool isAngry = false;
+	private bool isHipHop = false;
+
+
 	// Get current horizontal and vertical axes.
 	public float GetH { get { return h; } }
 	public float GetV { get { return v; } }
@@ -65,7 +71,7 @@ public class BasicBehaviour : MonoBehaviour
 		// Store the input axes.
 		h = Input.GetAxis("Horizontal");
 		v = Input.GetAxis("Vertical");
-
+		
 		// Set the input axes on the Animator Controller.
 		anim.SetFloat(hFloat, h, 0.1f, Time.deltaTime);
 		anim.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
@@ -85,6 +91,17 @@ public class BasicBehaviour : MonoBehaviour
 			changedFOV = false;
 		}
 		// Set the grounded test on the Animator Controller.
+		isGreet = Input.GetKeyDown(KeyCode.Alpha1);
+		isAngry = Input.GetKeyDown(KeyCode.Alpha2);
+		isHipHop = Input.GetKeyDown(KeyCode.Alpha3);
+
+		if (isGreet)
+			Greet();
+		else if (isAngry)
+			Angry();
+		else if (isHipHop)
+			HipHop();
+
 		anim.SetBool(groundedBool, IsGrounded());
 	}
 
@@ -324,6 +341,37 @@ public class BasicBehaviour : MonoBehaviour
 		Ray ray = new Ray(this.transform.position + Vector3.up * 2 * colExtents.x, Vector3.down);
 		return Physics.SphereCast(ray, colExtents.x, colExtents.x + 0.2f);
 	}
+
+	void Greet()
+	{
+		anim.SetTrigger("GreetingTrigger");
+		Invoke("StopGreeting", 3);
+	}
+	void StopGreeting()
+    {
+		anim.SetTrigger("StopGreeting");
+	}
+
+	void Angry()
+    {
+		anim.SetTrigger("Angry");
+		Invoke("StopAngry", 5);
+	}
+	void StopAngry()
+    {
+		anim.SetTrigger("StopAngry");
+	}
+
+	void HipHop()
+	{
+		anim.SetTrigger("HipHop");
+		Invoke("StopHipHop", 15);
+	}
+	void StopHipHop()
+	{
+		anim.SetTrigger("StopHipHop");
+	}
+
 }
 
 // This is the base class for all player behaviours, any custom behaviour must inherit from this.
@@ -368,4 +416,6 @@ public abstract class GenericBehaviour : MonoBehaviour
 	{
 		return canSprint;
 	}
+
+
 }

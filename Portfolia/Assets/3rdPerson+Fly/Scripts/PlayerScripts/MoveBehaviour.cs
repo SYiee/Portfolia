@@ -52,6 +52,7 @@ public class MoveBehaviour : GenericBehaviour
 			jump = true;
 		}
 	}
+	
 
     // LocalFixedUpdate overrides the virtual function of the base class.
     public override void LocalFixedUpdate()
@@ -66,6 +67,8 @@ public class MoveBehaviour : GenericBehaviour
         }
     }
 
+
+	
 	// Execute the idle and walk/run jump movements.
 	void JumpManagement()
 	{
