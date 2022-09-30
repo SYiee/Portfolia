@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Link_Obj : MonoBehaviour
 {
+    public string saved_url;
     private static Link_Obj instance = null;
     public static Link_Obj Instance
     {
@@ -24,10 +25,10 @@ public class Link_Obj : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public string url;
-    public void link(string urll)
+    private string url;
+    public void link()
     {
-        Application.OpenURL(urll);
+        Application.OpenURL(saved_url);
     }
 
 }

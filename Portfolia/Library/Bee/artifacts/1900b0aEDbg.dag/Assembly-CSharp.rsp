@@ -368,6 +368,7 @@
 "Assets/Inseo/Script/Click_anc_Link.cs"
 "Assets/Inseo/Script/DoubleClick_Color.cs"
 "Assets/Inseo/Script/Link_Obj.cs"
+"Assets/Inseo/Script/URL_save.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"

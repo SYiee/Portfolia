@@ -8,6 +8,17 @@ public class Click_anc_Link : MonoBehaviour
     float doubleClickedTime = -1.0f;
     bool pickerOnOff = false;
 
+    public string url;
+
+    private static Click_anc_Link instance = null;
+    public static Click_anc_Link Instance
+    {
+        get
+        {
+            if (null == instance) instance = FindObjectOfType<Click_anc_Link>();
+            return instance;
+        }
+    }
 
     private void OnMouseUp()
     {
@@ -17,6 +28,7 @@ public class Click_anc_Link : MonoBehaviour
 
             if (Link_Obj.Instance.gameObject.activeSelf == false)
             {
+                Link_Obj.Instance.saved_url = url;
                 pickerOnOff = true;
                 Link_Obj.Instance.gameObject.SetActive(true);
                 ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
@@ -37,6 +49,7 @@ public class Click_anc_Link : MonoBehaviour
         Link_Obj.Instance.gameObject.SetActive(false);
         ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
         MoveBehaviour.Instance.can_move = true;
+        //Application.OpenURL(url);
     }
 
     private void Update()
