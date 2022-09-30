@@ -368,6 +368,8 @@
 "Assets/Inseo/Script/CircleColorPicker.cs"
 "Assets/Inseo/Script/DoubleClick_Color.cs"
 "Assets/Inseo/Script/Link/Click_anc_Link.cs"
+"Assets/Inseo/Script/Link/Custom_Link.cs"
+"Assets/Inseo/Script/Link/Custom_LinkUI.cs"
 "Assets/Inseo/Script/Link/Link_Obj.cs"
 "Assets/Inseo/Script/URL_save.cs"
 "Assets/SoYeon/Emotion.cs"
