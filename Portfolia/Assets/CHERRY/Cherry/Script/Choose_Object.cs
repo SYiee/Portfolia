@@ -68,26 +68,15 @@ public class Choose_Object : MonoBehaviour
                     if (hit.transform.GetComponentInChildren<BoxCollider>().transform != presentobject.transform.GetComponentInChildren<BoxCollider>().transform)
                         presentobject.transform.position = hit.transform.position + new Vector3(0, size + size2, 0);
                 }
-
-                if (hit.collider.tag != "Floor")
-                {
-                    Destroy(presentobject);
-                    is_first_spawn = true;
-                }
-
-
             }
         }
-
-
-
 
         if (Input.GetMouseButtonDown(0) && is_editmode)  // 물체 생성하기
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit))  
             {
                 Destroy(presentobject);
                 is_first_spawn = true;
