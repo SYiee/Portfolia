@@ -6,7 +6,7 @@ public class Click_anc_Link : MonoBehaviour
 {
     float interval = 0.25f;
     float doubleClickedTime = -1.0f;
-    bool pickerOnOff = false;
+    public bool pickerOnOff = false;
 
     public string url;
 
@@ -46,9 +46,9 @@ public class Click_anc_Link : MonoBehaviour
     public void linked()
     {
         pickerOnOff = false;
-        Link_Obj.Instance.gameObject.SetActive(false);
         ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
         MoveBehaviour.Instance.can_move = true;
+        Link_Obj.Instance.gameObject.SetActive(false);
         //Application.OpenURL(url);
     }
 

@@ -68,6 +68,7 @@ public class CircleColorPicker : MonoBehaviour
     }
 
     private float speed = 3f;
+
     private void selectColor()
     {
         Vector3 offset = Input.mousePosition - transform.position;

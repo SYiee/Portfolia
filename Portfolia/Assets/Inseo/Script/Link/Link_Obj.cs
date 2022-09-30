@@ -29,6 +29,10 @@ public class Link_Obj : MonoBehaviour
     public void link()
     {
         Application.OpenURL(saved_url);
+        Click_anc_Link.Instance.pickerOnOff = false;
+        ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
+        MoveBehaviour.Instance.can_move = true;
+        Link_Obj.Instance.gameObject.SetActive(false);
     }
 
 }
