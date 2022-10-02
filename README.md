@@ -47,7 +47,7 @@ https://syiee.itch.io/portfolia
 ## Developed by. Electronic Hippo⚡
 
 💁‍♀️ SYiee
-💁‍ SallyKim
+💁‍ Cherry
 💁‍ Grace 
 💁‍♂️ Sarisol  
 (from KHU SWCON)
