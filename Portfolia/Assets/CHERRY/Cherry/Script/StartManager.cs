@@ -9,6 +9,8 @@ public class StartManager : MonoBehaviour
 
     public GameObject Player;
 
+    public static int character_num = 0;
+
     int num = 0;
     private Transform Player_Transform;
 
@@ -22,9 +24,10 @@ public class StartManager : MonoBehaviour
     {
         Player_Transform = Player.transform;
         Destroy(Player);
+        num = (num + 1) % Characters.Count;
+        character_num = num;
         GameObject newcharacter = Instantiate(Characters[num], Player_Transform.position, Characters[num].transform.rotation);
         Player = newcharacter;
-        num = (num + 1) % Characters.Count;
     }
 
     public void SelectCharacter()
