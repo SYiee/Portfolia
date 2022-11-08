@@ -121,5 +121,13 @@ public class CircleColorPicker : MonoBehaviour
                 }
             }
         }
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            linkedObject.GetComponent<DoubleClick_Color>().pickerOnOff = false;
+            gameObject.SetActive(false);
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
+            MoveBehaviour.Instance.can_move = true;
+            Destroy(linkedObject);
+        }
     }
 }
