@@ -76,19 +76,19 @@ public class CircleColorPicker : MonoBehaviour
 
         picker.transform.position = transform.position + diff;
 
-            selectedColor = getColor();
-            MeshRenderer[] mesh = linkedObject.GetComponentsInChildren<MeshRenderer>();
+        selectedColor = getColor();
+        MeshRenderer[] mesh = linkedObject.GetComponentsInChildren<MeshRenderer>();
 
         linkedObject.GetComponent<DoubleClick_Color>().pickerOnOff = false;
         linkedObject = null;
         foreach (MeshRenderer child in mesh)
-            {
-                child.materials[0].color = selectedColor;
-                linkedObject = null;
-                ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
-                MoveBehaviour.Instance.can_move = true;
-                transform.gameObject.SetActive(false);
-             }
+        {
+            child.materials[0].color = selectedColor;
+            linkedObject = null;
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
+            MoveBehaviour.Instance.can_move = true;
+            transform.gameObject.SetActive(false);
+        }
     }
 
 
@@ -104,9 +104,22 @@ public class CircleColorPicker : MonoBehaviour
         }
         if (Input.GetMouseButton(1))
         {
-            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5);
+            /*
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(linkedObject.transform.position, Camera.main.transform.position));
             Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            linkedObject.GetComponent<Transform>().position = objPosition;
+            linkedObject.GetComponent<Transform>().position = new Vector3(objPosition.x, linkedObject.transform.position.y,objPosition.z);      
+            */
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.tag == "Floor")
+                {
+                    linkedObject.GetComponent<Transform>().position = new Vector3(hit.point.x, linkedObject.transform.position.y, hit.point.z);
+                }
+            }
         }
     }
 }
