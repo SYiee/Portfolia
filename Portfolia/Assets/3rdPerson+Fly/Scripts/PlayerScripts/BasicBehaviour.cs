@@ -32,6 +32,12 @@ public class BasicBehaviour : MonoBehaviour
 	private bool isGreet = false;
 	private bool isAngry = false;
 	private bool isHipHop = false;
+	private bool isClap = false;
+	private bool isFlip = false;
+	private bool isLay = false;
+	private bool isCry = false;
+	private bool isSit = false;
+	private bool sitting = false;
 
 
 	// Get current horizontal and vertical axes.
@@ -94,6 +100,20 @@ public class BasicBehaviour : MonoBehaviour
 		isGreet = Input.GetKeyDown(KeyCode.Alpha1);
 		isAngry = Input.GetKeyDown(KeyCode.Alpha2);
 		isHipHop = Input.GetKeyDown(KeyCode.Alpha3);
+		isClap = Input.GetKeyDown(KeyCode.Alpha4);
+		isFlip = Input.GetKeyDown(KeyCode.Alpha5);
+		isCry = Input.GetKeyDown(KeyCode.Alpha6);
+		isSit = Input.GetKeyDown(KeyCode.X);
+
+		if(isSit)
+        {
+			sitting = !sitting;
+			if(sitting)
+				StandToSit();
+			else
+				SitToStand();
+
+		}
 
 		if (isGreet)
 			Greet();
@@ -101,8 +121,18 @@ public class BasicBehaviour : MonoBehaviour
 			Angry();
 		else if (isHipHop)
 			HipHop();
+		else if (isClap)
+			Clap();
 
-		anim.SetBool(groundedBool, IsGrounded());
+		else if (isFlip)
+			Flip();
+		else if (isLay)
+			Laying();
+		else if (isCry)
+			Cry();
+
+
+        anim.SetBool(groundedBool, IsGrounded());
 	}
 
 	// Call the FixedUpdate functions of the active or overriding behaviours.
@@ -371,6 +401,62 @@ public class BasicBehaviour : MonoBehaviour
 	{
 		anim.SetTrigger("StopHipHop");
 	}
+
+	void Clap()
+    {
+		anim.SetTrigger("Clap");
+		Invoke("StopClap", 1);
+    }
+	void StopClap()
+    {
+		anim.SetTrigger("StopClap");
+	}
+	void Flip()
+    {
+		anim.SetTrigger("Flip");
+		Invoke("StopFlip", 1);
+    }
+	void StopFlip()
+    {
+		anim.SetTrigger("StopFlip");
+    }
+	void Laying()
+    {
+		anim.SetTrigger("Laying");
+		Invoke("StopLaying", 1);
+    }
+	void StopLaying()
+    {
+		anim.SetTrigger("StopLaying");
+    }
+	void Cry()
+	{
+		anim.SetTrigger("Cry");
+		Invoke("StopCry", 1);
+	}
+	void StopCry()
+	{
+		anim.SetTrigger("StopCry");
+	}
+	void StandToSit()
+    {
+		anim.SetTrigger("StandToSit");
+		Invoke("Sit", 2);
+    }
+	void Sit()
+    {
+		anim.SetTrigger("Sit");
+    }
+
+	void SitToStand()
+    {
+		anim.SetTrigger("SitToStand");
+		Invoke("StopSit",0);
+    }
+	void StopSit()
+    {
+		anim.SetTrigger("StopSit");
+    }
 
 }
 
