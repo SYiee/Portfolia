@@ -103,7 +103,7 @@ public class BasicBehaviour : MonoBehaviour
 		isClap = Input.GetKeyDown(KeyCode.Alpha4);
 		isFlip = Input.GetKeyDown(KeyCode.Alpha5);
 		isCry = Input.GetKeyDown(KeyCode.Alpha6);
-		isSit = Input.GetKeyDown(KeyCode.X);
+		isSit = Input.GetKeyDown(KeyCode.C);
 
 		if(isSit)
         {
