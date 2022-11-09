@@ -27,7 +27,7 @@ public class Choose_Object : MonoBehaviour
     //  public List<GameObject> newobject = new List<GameObject>();
     //   public List<GameObject> exobject = new List<GameObject>();
 
-    private GameObject presentobject;
+    public GameObject presentobject;
     RaycastHit present_hit;
 
     public bool is_editmode = false;
@@ -46,71 +46,126 @@ public class Choose_Object : MonoBehaviour
         {
             Debug.Log("edit mode");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log(ray);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "Floor" || hit.collider.tag == "Object"))
+            if (Physics.Raycast(ray, out hit))
             {
-                present_hit = hit;
-                if (is_first_spawn)
-                {
-                    is_first_spawn = false;
-                    Debug.Log("霉 积己");
-                    float size = objectArray[objnum].objects[roomnum].GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
-                    float size2 = hit.transform.GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
-                    Debug.Log(size2);
-                    presentobject = Instantiate(objectArray[objnum].objects[roomnum], hit.transform.position + new Vector3(0, size + size2 + 1, 0), objectArray[objnum].objects[roomnum].transform.rotation);
+                if (hit.collider.tag == "Floor" || hit.collider.tag == "Object") { 
+
+                    present_hit = hit;
+                    if (is_first_spawn)
+                    {
+                    
+                        Debug.Log("霉 积己");
+                        float size = objectArray[objnum].objects[roomnum].GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
+                        float size2 = hit.transform.GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
+                        Debug.Log(size2);
+                    
+                        presentobject = Instantiate(objectArray[objnum].objects[roomnum], hit.transform.position + new Vector3(0, size + size2 + 1, 0), objectArray[objnum].objects[roomnum].transform.rotation);
+
+                        RigidSetting(presentobject);
+
+                        is_first_spawn = false;
+                    }
+                    else
+                    {
+                        ChangetoWhite(presentobject);
+                        float size = objectArray[objnum].objects[roomnum].GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
+                        float size2 = hit.transform.GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
+                        Debug.Log(size2);
+
+                        if (hit.transform.GetComponentInChildren<BoxCollider>().transform != presentobject.transform.GetComponentInChildren<BoxCollider>().transform)
+                            presentobject.transform.position = hit.transform.position + new Vector3(0, size + size2 + 1, 0);
+                    }
                 }
                 else
                 {
-                    float size = objectArray[objnum].objects[roomnum].GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
-                    float size2 = hit.transform.GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
-                    Debug.Log(size2);
-
-                    if (hit.transform.GetComponentInChildren<BoxCollider>().transform != presentobject.transform.GetComponentInChildren<BoxCollider>().transform)
-                        presentobject.transform.position = hit.transform.position + new Vector3(0, size + size2 + 1, 0);
+                    if (!is_first_spawn && hit.transform != presentobject.transform)
+                    {
+                        ChangetoRed(presentobject);
+                    }
                 }
             }
+            
         }
-
+        
         if (Input.GetMouseButtonDown(0) && is_editmode)  // 拱眉 积己窍扁
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "Floor" || hit.collider.tag == "Object"))  
+
+            if (Physics.Raycast(ray, out hit))
             {
-                Destroy(presentobject);
-                is_first_spawn = true;
-                float size = objectArray[objnum].objects[roomnum].GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
-                float size2 = present_hit.transform.GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
-                Debug.Log("size1");
-
-                GameObject instance = Instantiate(objectArray[objnum].objects[roomnum], hit.transform.position + new Vector3(0, size + size2 + 1, 0), objectArray[objnum].objects[roomnum].transform.rotation);
-
-
-                if (instance.GetComponent<MeshCollider>() != null)
+                if (hit.transform != presentobject.transform)
                 {
-                    instance.GetComponent<MeshCollider>().convex = true;
+                    Destroy(presentobject);
+                    if (hit.collider.tag == "Floor" || hit.collider.tag == "Object")
+                    {
+                        is_first_spawn = true;
+                        float size = objectArray[objnum].objects[roomnum].GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
+                        float size2 = present_hit.transform.GetComponentInChildren<BoxCollider>().bounds.size.y / 2;
+                        Debug.Log("size1");
+
+                        GameObject instance = Instantiate(objectArray[objnum].objects[roomnum], hit.transform.position + new Vector3(0, size + size2 + 1, 0), objectArray[objnum].objects[roomnum].transform.rotation);
+
+                        RigidSetting(instance);
+
+                    }
                 }
-                if (instance.GetComponentInChildren<MeshCollider>() != null)
-                {
-                    instance.GetComponentInChildren<MeshCollider>().convex = true;
+                else {
+                    presentobject = null;
                 }
 
-                instance.AddComponent<Rigidbody>();
-                instance.GetComponent<Rigidbody>().mass = 100000;
-
-               // instance.GetComponent<Rigidbody>().isKinematic = true;
-
-                Debug.Log(hit.transform.position);
-                GameObject.Find("InventoryManager").GetComponentInChildren<InventoryUI>().EditModeOut();
+                // instance.GetComponent<Rigidbody>().isKinematic = true;
             }
+
+            is_first_spawn = true;
+
+            GameObject.Find("InventoryManager").GetComponentInChildren<InventoryUI>().EditModeOut();
+
         }
     }
 
+    void RigidSetting(GameObject obj)
+    {
+        if (obj.GetComponent<MeshCollider>() != null)
+        {
+            obj.GetComponent<MeshCollider>().convex = true;
+        }
+        if (obj.GetComponentInChildren<MeshCollider>() != null)
+        {
+            obj.GetComponentInChildren<MeshCollider>().convex = true;
+        }
 
-    
+        obj.AddComponent<Rigidbody>();
+        obj.GetComponent<Rigidbody>().mass = 100000;
+        obj.GetComponent<Rigidbody>().freezeRotation = true;
+    }
+
+    void ChangetoRed(GameObject obj)
+    {
+        if (obj.GetComponent<MeshRenderer>() != null)
+        {
+            obj.GetComponent<MeshRenderer>().material.color = Color.red;
+        }
+        if (obj.GetComponentInChildren<MeshRenderer>() != null)
+        {
+            obj.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+        }
+    }
+
+    void ChangetoWhite(GameObject obj)
+    {
+        if (obj.GetComponent<MeshRenderer>() != null)
+        {
+            obj.GetComponent<MeshRenderer>().material.color = Color.white;
+        }
+        if (obj.GetComponentInChildren<MeshRenderer>() != null)
+        {
+            obj.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
+        }
+    }
 
 
     public void UpdateUI(int obj_type)
