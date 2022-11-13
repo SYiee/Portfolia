@@ -142,6 +142,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_Application_get_isPlaying();
 		Register_UnityEngine_Application_get_isPlaying();
 
+		//System.String UnityEngine.Application::get_streamingAssetsPath()
+		void Register_UnityEngine_Application_get_streamingAssetsPath();
+		Register_UnityEngine_Application_get_streamingAssetsPath();
+
 		//System.Void UnityEngine.Application::OpenURL(System.String)
 		void Register_UnityEngine_Application_OpenURL();
 		Register_UnityEngine_Application_OpenURL();
@@ -155,6 +159,14 @@ void RegisterAllStrippedInternalCalls()
 		Register_UnityEngine_Application_get_platform();
 
 	//End Registrations for type : UnityEngine.Application
+
+	//Start Registrations for type : UnityEngine.AsyncOperation
+
+		//System.Void UnityEngine.AsyncOperation::InternalDestroy(System.IntPtr)
+		void Register_UnityEngine_AsyncOperation_InternalDestroy();
+		Register_UnityEngine_AsyncOperation_InternalDestroy();
+
+	//End Registrations for type : UnityEngine.AsyncOperation
 
 	//Start Registrations for type : UnityEngine.Behaviour
 
@@ -914,6 +926,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_GameObject_TryGetComponentInternal();
 		Register_UnityEngine_GameObject_TryGetComponentInternal();
 
+		//UnityEngine.GameObject UnityEngine.GameObject::Find(System.String)
+		void Register_UnityEngine_GameObject_Find();
+		Register_UnityEngine_GameObject_Find();
+
 		//UnityEngine.GameObject UnityEngine.GameObject::FindGameObjectWithTag(System.String)
 		void Register_UnityEngine_GameObject_FindGameObjectWithTag();
 		Register_UnityEngine_GameObject_FindGameObjectWithTag();
@@ -1390,6 +1406,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_Input_GetKeyInt();
 		Register_UnityEngine_Input_GetKeyInt();
 
+		//System.Boolean UnityEngine.Input::GetKeyUpInt(UnityEngine.KeyCode)
+		void Register_UnityEngine_Input_GetKeyUpInt();
+		Register_UnityEngine_Input_GetKeyUpInt();
+
 		//System.Boolean UnityEngine.Input::GetMouseButton(System.Int32)
 		void Register_UnityEngine_Input_GetMouseButton();
 		Register_UnityEngine_Input_GetMouseButton();
@@ -1748,6 +1768,14 @@ void RegisterAllStrippedInternalCalls()
 
 	//End Registrations for type : UnityEngine.Mesh
 
+	//Start Registrations for type : UnityEngine.MeshCollider
+
+		//System.Void UnityEngine.MeshCollider::set_convex(System.Boolean)
+		void Register_UnityEngine_MeshCollider_set_convex();
+		Register_UnityEngine_MeshCollider_set_convex();
+
+	//End Registrations for type : UnityEngine.MeshCollider
+
 	//Start Registrations for type : UnityEngine.MeshFilter
 
 		//System.Void UnityEngine.MeshFilter::set_sharedMesh(UnityEngine.Mesh)
@@ -1853,6 +1881,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Void UnityEngine.Object::DestroyImmediate(UnityEngine.Object,System.Boolean)
 		void Register_UnityEngine_Object_DestroyImmediate();
 		Register_UnityEngine_Object_DestroyImmediate();
+
+		//System.Void UnityEngine.Object::DontDestroyOnLoad(UnityEngine.Object)
+		void Register_UnityEngine_Object_DontDestroyOnLoad();
+		Register_UnityEngine_Object_DontDestroyOnLoad();
 
 		//System.Void UnityEngine.Object::SetName(UnityEngine.Object,System.String)
 		void Register_UnityEngine_Object_SetName();
@@ -2390,6 +2422,14 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_Rigidbody_get_velocity_Injected();
 		Register_UnityEngine_Rigidbody_get_velocity_Injected();
 
+		//System.Void UnityEngine.Rigidbody::set_freezeRotation(System.Boolean)
+		void Register_UnityEngine_Rigidbody_set_freezeRotation();
+		Register_UnityEngine_Rigidbody_set_freezeRotation();
+
+		//System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+		void Register_UnityEngine_Rigidbody_set_mass();
+		Register_UnityEngine_Rigidbody_set_mass();
+
 		//System.Void UnityEngine.Rigidbody::set_useGravity(System.Boolean)
 		void Register_UnityEngine_Rigidbody_set_useGravity();
 		Register_UnityEngine_Rigidbody_set_useGravity();
@@ -2399,6 +2439,26 @@ void RegisterAllStrippedInternalCalls()
 		Register_UnityEngine_Rigidbody_set_velocity_Injected();
 
 	//End Registrations for type : UnityEngine.Rigidbody
+
+	//Start Registrations for type : UnityEngine.SceneManagement.SceneManager
+
+		//System.Int32 UnityEngine.SceneManagement.SceneManager::get_sceneCount()
+		void Register_UnityEngine_SceneManagement_SceneManager_get_sceneCount();
+		Register_UnityEngine_SceneManagement_SceneManager_get_sceneCount();
+
+		//System.Void UnityEngine.SceneManagement.SceneManager::GetSceneAt_Injected(System.Int32,UnityEngine.SceneManagement.Scene&)
+		void Register_UnityEngine_SceneManagement_SceneManager_GetSceneAt_Injected();
+		Register_UnityEngine_SceneManagement_SceneManager_GetSceneAt_Injected();
+
+	//End Registrations for type : UnityEngine.SceneManagement.SceneManager
+
+	//Start Registrations for type : UnityEngine.SceneManagement.SceneManagerAPIInternal
+
+		//UnityEngine.AsyncOperation UnityEngine.SceneManagement.SceneManagerAPIInternal::LoadSceneAsyncNameIndexInternal_Injected(System.String,System.Int32,UnityEngine.SceneManagement.LoadSceneParameters&,System.Boolean)
+		void Register_UnityEngine_SceneManagement_SceneManagerAPIInternal_LoadSceneAsyncNameIndexInternal_Injected();
+		Register_UnityEngine_SceneManagement_SceneManagerAPIInternal_LoadSceneAsyncNameIndexInternal_Injected();
+
+	//End Registrations for type : UnityEngine.SceneManagement.SceneManagerAPIInternal
 
 	//Start Registrations for type : UnityEngine.Screen
 
@@ -3175,6 +3235,18 @@ void RegisterAllStrippedInternalCalls()
 		Register_UnityEngine_UISystemProfilerApi_EndSample();
 
 	//End Registrations for type : UnityEngine.UISystemProfilerApi
+
+	//Start Registrations for type : UnityEngine.Video.VideoPlayer
+
+		//System.Void UnityEngine.Video.VideoPlayer::Play()
+		void Register_UnityEngine_Video_VideoPlayer_Play();
+		Register_UnityEngine_Video_VideoPlayer_Play();
+
+		//System.Void UnityEngine.Video.VideoPlayer::set_url(System.String)
+		void Register_UnityEngine_Video_VideoPlayer_set_url();
+		Register_UnityEngine_Video_VideoPlayer_set_url();
+
+	//End Registrations for type : UnityEngine.Video.VideoPlayer
 
 	//Start Registrations for type : UnityEngine.Yoga.Native
 

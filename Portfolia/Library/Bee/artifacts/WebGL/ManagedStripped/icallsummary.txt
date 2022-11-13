@@ -27,9 +27,11 @@ UnityEngine.Animator::SetTriggerString
 UnityEngine.Application::get_isBatchMode
 UnityEngine.Application::get_isFocused
 UnityEngine.Application::get_isPlaying
+UnityEngine.Application::get_streamingAssetsPath
 UnityEngine.Application::OpenURL
 UnityEngine.Application::set_targetFrameRate
 UnityEngine.Application::get_platform
+UnityEngine.AsyncOperation::InternalDestroy
 UnityEngine.Behaviour::get_enabled
 UnityEngine.Behaviour::get_isActiveAndEnabled
 UnityEngine.Behaviour::set_enabled
@@ -195,6 +197,7 @@ UnityEngine.GameObject::GetComponentInChildren
 UnityEngine.GameObject::GetComponentInParent
 UnityEngine.GameObject::Internal_AddComponentWithType
 UnityEngine.GameObject::TryGetComponentInternal
+UnityEngine.GameObject::Find
 UnityEngine.GameObject::FindGameObjectWithTag
 UnityEngine.GameObject::get_transform
 UnityEngine.GL::Begin
@@ -304,6 +307,7 @@ UnityEngine.Input::GetButtonDown
 UnityEngine.Input::GetKeyDownInt
 UnityEngine.Input::GetKeyDownString
 UnityEngine.Input::GetKeyInt
+UnityEngine.Input::GetKeyUpInt
 UnityEngine.Input::GetMouseButton
 UnityEngine.Input::GetMouseButtonDown
 UnityEngine.Input::GetMouseButtonUp
@@ -387,6 +391,7 @@ UnityEngine.Mesh::SetArrayForChannelImpl
 UnityEngine.Mesh::SetIndicesImpl
 UnityEngine.Mesh::get_bounds_Injected
 UnityEngine.Mesh::set_bounds_Injected
+UnityEngine.MeshCollider::set_convex
 UnityEngine.MeshFilter::set_sharedMesh
 UnityEngine.MonoBehaviour::Internal_IsInvokingAll
 UnityEngine.MonoBehaviour::IsInvoking
@@ -410,6 +415,7 @@ UnityEngine.Object::GetName
 UnityEngine.Object::ToString
 UnityEngine.Object::Destroy
 UnityEngine.Object::DestroyImmediate
+UnityEngine.Object::DontDestroyOnLoad
 UnityEngine.Object::SetName
 UnityEngine.Object::set_hideFlags
 UnityEngine.Object::get_hideFlags
@@ -522,8 +528,13 @@ UnityEngine.Rigidbody::AddForce_Injected
 UnityEngine.Rigidbody::MoveRotation_Injected
 UnityEngine.Rigidbody::get_rotation_Injected
 UnityEngine.Rigidbody::get_velocity_Injected
+UnityEngine.Rigidbody::set_freezeRotation
+UnityEngine.Rigidbody::set_mass
 UnityEngine.Rigidbody::set_useGravity
 UnityEngine.Rigidbody::set_velocity_Injected
+UnityEngine.SceneManagement.SceneManager::get_sceneCount
+UnityEngine.SceneManagement.SceneManager::GetSceneAt_Injected
+UnityEngine.SceneManagement.SceneManagerAPIInternal::LoadSceneAsyncNameIndexInternal_Injected
 UnityEngine.Screen::get_fullScreen
 UnityEngine.Screen::get_height
 UnityEngine.Screen::get_width
@@ -694,6 +705,8 @@ UnityEngine.UIElements.UIR.Utility::WaitForCPUFencePassed
 UnityEngine.UISystemProfilerApi::AddMarker
 UnityEngine.UISystemProfilerApi::BeginSample
 UnityEngine.UISystemProfilerApi::EndSample
+UnityEngine.Video.VideoPlayer::Play
+UnityEngine.Video.VideoPlayer::set_url
 UnityEngine.Yoga.Native::YGConfigGetUseWebDefaults
 UnityEngine.Yoga.Native::YGNodeGetHasNewLayout
 UnityEngine.Yoga.Native::YGNodeIsDirty
