@@ -1,7 +1,7 @@
 # Portfolia
 > <h3>Portfolio Sharing Metaverse Platform💜
 
-![image](https://user-images.githubusercontent.com/79504024/193369340-e710d67e-039c-4824-8d48-a83a3538105d.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/79504024/193369340-e710d67e-039c-4824-8d48-a83a3538105d.png"  width="500" height="350"/></p>
 
 The metaverse defined by our team is ` "A channel to express yourself and share it online" `.
 With the purpose of creating a window for college students to spatialize their portfolios beyond visualization, and to connect recruiters and college students.
@@ -23,8 +23,14 @@ With the purpose of creating a window for college students to spatialize their p
 <br/>  
 
 -------------------------------  
+## 🕹Key  
+
+![포트폴리아 키보드 조작 New](https://user-images.githubusercontent.com/79504024/201521595-497a248b-7a01-47d5-be43-ff4dc1eafe9b.png)
+
+
+-------------------------------  
 ## 🎞Trailer Video  
-▶ https://youtu.be/f2ksVtGYh7Q  
+▶ https://www.youtube.com/watch?v=uSoujnJQdcs
   
 <br/>  
  
