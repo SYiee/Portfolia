@@ -14,6 +14,8 @@ public class YoutubeStreaming : MonoBehaviour
     public GameObject btn;
     private string str = "";
 
+    public bool already_out = false;
+
 
     VideoPlayer vp;
 
@@ -74,12 +76,19 @@ public class YoutubeStreaming : MonoBehaviour
     {
         if (isDoubleClicked)
         {
+            if (!already_out)
+                ScreenOut();
             btn.SetActive(true);
             inputField.SetActive(true);
             isDoubleClicked = false;
         }
     }
 
+    void ScreenOut()
+    {
+        gameObject.transform.position += new Vector3(-0.8f, 0, 0);
+        already_out = true;
+    }
 
 
 

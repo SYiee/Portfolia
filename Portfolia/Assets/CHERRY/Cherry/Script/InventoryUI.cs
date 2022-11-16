@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject EditOffBtn;
     public GameObject ChooseUI;
+    public GameObject ScreenInstallText;
 
     bool activeInventory = false;
     bool activeEditBtn = false;
@@ -32,8 +33,17 @@ public class InventoryUI : MonoBehaviour
     {
         activeInventory = false;
         inventoryPanel.SetActive(activeInventory);
-        ChooseUI.SetActive(true);
-        GameObject.Find("ChooseManager").GetComponent<Choose_Object>().UpdateUI(item_type);
+
+        if (item_type == 8)
+        { // 스크린 설치일 때
+            ScreenInstallText.SetActive(true);
+            Destroy(ScreenInstallText, 4f);
+        }
+        else  // 나머지 오브젝트 설치
+        {
+            ChooseUI.SetActive(true);
+            GameObject.Find("ChooseManager").GetComponent<Choose_Object>().UpdateUI(item_type);
+        }
     }
 
     public void BacktoInventoryUI()
