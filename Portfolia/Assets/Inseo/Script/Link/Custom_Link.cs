@@ -53,12 +53,5 @@ public class Custom_Link : MonoBehaviour
         //Application.OpenURL(url);
     }
 
-    private void Update()
-    {
-        //if (pickerOnOff)
-        //{
-        //    CircleColorPicker.Instance.gameObject.transform.position
-        //        = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2);
-        //}
-    }
+
 }
