@@ -25,7 +25,8 @@ public class InventoryUI : MonoBehaviour
             Cursor.visible = true;
             activeInventory = !activeInventory;
             inventoryPanel.SetActive(activeInventory);
-
+            //화면 이동 제한
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
         }
     }
 
@@ -65,6 +66,8 @@ public class InventoryUI : MonoBehaviour
         activeEditBtn = !activeEditBtn;
         EditOffBtn.SetActive(false);
         GameObject.Find("ChooseManager").GetComponent<Choose_Object>().is_editmode = false;
+        //화면 이동 제한 해제
+        ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
     }
 
     public void BtnEditModeOut()
@@ -72,6 +75,9 @@ public class InventoryUI : MonoBehaviour
         Destroy(GameObject.Find("ChooseManager").GetComponent<Choose_Object>().presentobject);
         Debug.Log("없어져라");
         GameObject.Find("ChooseManager").GetComponent<Choose_Object>().is_editmode = false;
+
+        //화면 이동 제한 해제
+        ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
 
         EditOffBtn.SetActive(false);
         ChooseUI.SetActive(false);

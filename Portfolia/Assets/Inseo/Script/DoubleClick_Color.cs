@@ -13,14 +13,15 @@ public class DoubleClick_Color : MonoBehaviour
         if ((Time.time - doubleClickedTime) < interval)
         {
             doubleClickedTime = -1.0f;
-
             if (CircleColorPicker.Instance.gameObject.activeSelf == false)
             {
                 pickerOnOff = true;
                 CircleColorPicker.Instance.gameObject.SetActive(true);
                 CircleColorPicker.Instance.linkedObject = this.gameObject;
-                ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
+                //이동 제한
                 MoveBehaviour.Instance.can_move = false;
+                //시점 제한
+                ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
             }
             else
             {
@@ -41,12 +42,14 @@ public class DoubleClick_Color : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        //print(ThirdPersonOrbitCamBasic.Instance.can_cam_move);
         if (pickerOnOff)
         {
-            print(pickerOnOff);
-            CircleColorPicker.Instance.gameObject.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
+            //print(pickerOnOff);
+            CircleColorPicker.Instance.gameObject.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y+2, transform.position.z));
         }
     }
 }

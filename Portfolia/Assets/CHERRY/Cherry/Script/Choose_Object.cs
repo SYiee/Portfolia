@@ -44,6 +44,8 @@ public class Choose_Object : MonoBehaviour
     {
         if (is_editmode)  // 생성할 물체 미리보기
         {
+            //시점 제한
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
             Debug.Log("edit mode");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -93,7 +95,7 @@ public class Choose_Object : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
 
             if (Physics.Raycast(ray, out hit))
             {

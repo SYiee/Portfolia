@@ -72,15 +72,17 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 	void Update()
 	{
         if (start_okay) {
-			if (Input.GetKeyDown(KeyCode.LeftControl))
+			if (Input.GetKeyDown(KeyCode.LeftControl)&&can_cam_move == true)
 			{
 				Cursor.visible = true;
+				can_cam_move = false;
 			}
-			if (Input.GetKeyUp(KeyCode.LeftControl))
+			if (Input.GetKeyUp(KeyCode.LeftControl) && can_cam_move == false)
 			{
 				Cursor.visible = false;
+				can_cam_move = true;
 			}
-			if (can_cam_move && !Input.GetKey(KeyCode.LeftControl))
+			if (can_cam_move==true)
 			{
 				// Get mouse movement to orbit the camera.
 				// Mouse:
