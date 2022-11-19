@@ -381,6 +381,7 @@
 "Assets/Inseo/Script/Link/Link_Obj.cs"
 "Assets/Inseo/Script/URL_save.cs"
 "Assets/Seeeeun/InputPhoto.cs"
+"Assets/SoYeon/Scripts/InputField_Url.cs"
 "Assets/SoYeon/Scripts/YoutubeStreaming.cs"
 "Assets/SoYeon/VideoManager/Blood.cs"
 "Assets/SoYeon/VideoManager/Trailer.cs"

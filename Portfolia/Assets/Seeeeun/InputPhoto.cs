@@ -70,7 +70,6 @@ public class InputPhoto : MonoBehaviour
     }
 
 
-
     IEnumerator DownloadImage(string MediaUrl)
     {
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);

@@ -38,13 +38,18 @@ public class InventoryUI : MonoBehaviour
         if (item_type == 8)
         { // 스크린 설치일 때
             ScreenInstallText.SetActive(true);
-            Destroy(ScreenInstallText, 4f);
+            Invoke("OffScreenUI", 4f);
         }
         else  // 나머지 오브젝트 설치
         {
             ChooseUI.SetActive(true);
             GameObject.Find("ChooseManager").GetComponent<Choose_Object>().UpdateUI(item_type);
         }
+    }
+
+    void OffScreenUI()
+    {
+        ScreenInstallText.SetActive(false);
     }
 
     public void BacktoInventoryUI()

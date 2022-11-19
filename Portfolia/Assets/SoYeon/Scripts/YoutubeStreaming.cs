@@ -3,60 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using System.Threading.Tasks;
+using UnityEngine.Networking;
 
 
 public class YoutubeStreaming : MonoBehaviour
 {
-    public string url;
+    // ¿µ»ó¿ë
     public GameObject inputurl;
-    public GameObject inputField;
+    public GameObject inputfield;
     public InputField Field;
-    public GameObject btn;
+    public bool is_leftscreen;
+
     private string str = "";
 
     public bool already_out = false;
 
+    VideoPlayer v_player;
 
-    VideoPlayer vp;
-
-
-    public void StoreName()
-    {
-       
-        url = inputurl.GetComponent<Text>().text;
-
-        if(url != "")
-        {
-            vp = GetComponent<VideoPlayer>();
-
-            for (int i = 0; i <= url.Length; i++)
-            {
-                if (url[i] == '=')
-                {
-                    for (int j = i + 1; j < url.Length; j++)
-                    {
-                        str += url[j];
-                    }
-                    break;
-                }
-            }
-
-            vp.url = "https://unity-youtube-dl-server.herokuapp.com/watch?v=" + str + "&cli=yt-dlp";
-            vp.Play();
-        }
-        
-
-        //inputurl.GetComponent<Text>().text = "";
-        btn.SetActive(false);
-        inputField.SetActive(false);
-        Field.Select();
-        Field.text = "";
-    }
 
 
     float interval = 0.25f;
     float doubleClickedTime = -1.0f;
     bool isDoubleClicked = false;
+
+    private void Start()
+    {
+        v_player = GetComponent<VideoPlayer>();
+    }
 
     private void OnMouseUp()
     {
@@ -76,17 +50,51 @@ public class YoutubeStreaming : MonoBehaviour
     {
         if (isDoubleClicked)
         {
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
+
             if (!already_out)
                 ScreenOut();
-            btn.SetActive(true);
-            inputField.SetActive(true);
+            inputfield.SetActive(true);
+            inputfield.GetComponent<InputField_Url>().vp = v_player;
+            inputfield.GetComponent<InputField_Url>()._material = gameObject.GetComponent<Renderer>().material;
+            inputfield.GetComponent<InputField_Url>().present_screen = gameObject;
             isDoubleClicked = false;
+        }
+    }
+
+    public void Update_Img(string url)
+    {
+        StartCoroutine(DownloadImage(url));
+    }
+
+    IEnumerator DownloadImage(string MediaUrl)
+    {
+
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.Log(request.error);
+            Debug.Log("REQ error??");
+        }
+        else
+        {
+
+            //Texture2D tex = new Texture2D(2, 2);
+            gameObject.GetComponent<Renderer>().material = new Material(Shader.Find("Unlit/Texture"));
+            gameObject.GetComponent<Renderer>().material.mainTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+
         }
     }
 
     void ScreenOut()
     {
-        gameObject.transform.position += new Vector3(-0.8f, 0, 0);
+        if(is_leftscreen)
+            gameObject.transform.position += new Vector3(-0.8f, 0, 0);
+        else
+            gameObject.transform.position += new Vector3(0, 0, 0.8f);
+
         already_out = true;
     }
 

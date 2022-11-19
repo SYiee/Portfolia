@@ -99,9 +99,9 @@ public class Choose_Object : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform != presentobject.transform)
+                if (!is_first_spawn && hit.transform != presentobject.transform)
                 {
-                    Destroy(presentobject);
+                        Destroy(presentobject);
                     if (hit.collider.tag == "Floor" || hit.collider.tag == "Object")
                     {
                         is_first_spawn = true;
