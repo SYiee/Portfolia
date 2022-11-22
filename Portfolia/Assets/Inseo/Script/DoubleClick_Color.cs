@@ -15,6 +15,7 @@ public class DoubleClick_Color : MonoBehaviour
             doubleClickedTime = -1.0f;
             if (CircleColorPicker.Instance.gameObject.activeSelf == false)
             {
+                Cursor.visible = true;
                 pickerOnOff = true;
                 CircleColorPicker.Instance.gameObject.SetActive(true);
                 CircleColorPicker.Instance.linkedObject = this.gameObject;
@@ -27,7 +28,7 @@ public class DoubleClick_Color : MonoBehaviour
             {
                 /* 현재 연결된 오브젝트가 아닌 경우는 끌 수 없음 */
                 if (CircleColorPicker.Instance.linkedObject.name != this.gameObject.name) return;
-
+                //Cursor.visible = false;
                 pickerOnOff = false;
                 CircleColorPicker.Instance.gameObject.SetActive(false);
                 CircleColorPicker.Instance.linkedObject = null;

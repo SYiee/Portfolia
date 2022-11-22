@@ -22,10 +22,16 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Cursor.visible = true;
             activeInventory = !activeInventory;
             inventoryPanel.SetActive(activeInventory);
             //화면 이동 제한
+            Cursor.visible = activeInventory;
+            ThirdPersonOrbitCamBasic.Instance.can_cam_move = !activeInventory;
+        }
+        if(activeInventory == true || GameObject.Find("ChooseManager").GetComponent<Choose_Object>().is_editmode == true)
+        {
+            //강제로 인벤토리 모드일때는 화면고정 & 커서
+            Cursor.visible = true;
             ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
         }
     }
@@ -73,6 +79,7 @@ public class InventoryUI : MonoBehaviour
         GameObject.Find("ChooseManager").GetComponent<Choose_Object>().is_editmode = false;
         //화면 이동 제한 해제
         ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
+        Cursor.visible = false;
     }
 
     public void BtnEditModeOut()
@@ -83,6 +90,7 @@ public class InventoryUI : MonoBehaviour
 
         //화면 이동 제한 해제
         ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
+        Cursor.visible = false;
 
         EditOffBtn.SetActive(false);
         ChooseUI.SetActive(false);

@@ -66,6 +66,8 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 				"It is recommended to set all vertical offset in Pivot Offset.");
 
 		start_okay = true;
+
+		Cursor.visible = false;
 	}
 
 	public bool can_cam_move = true;
