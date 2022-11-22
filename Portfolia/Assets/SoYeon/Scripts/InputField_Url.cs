@@ -83,6 +83,7 @@ public class InputField_Url : MonoBehaviour
         //_material.mainTexture = _texture;
 
         Debug.Log(url);
+        ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
 
         gameObject.SetActive(false);
         Field_P.Select();
