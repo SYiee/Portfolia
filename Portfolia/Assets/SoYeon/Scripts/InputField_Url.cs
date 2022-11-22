@@ -44,7 +44,7 @@ public class InputField_Url : MonoBehaviour
 
         url = inputurl.GetComponent<Text>().text;
 
-        if (url != "")
+        if (url != "" && url.Contains("https://www.youtube.com/watch?"))
         {
 
             for (int i = 0; i <= url.Length; i++)
