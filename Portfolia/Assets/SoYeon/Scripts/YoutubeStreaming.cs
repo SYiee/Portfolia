@@ -90,10 +90,14 @@ public class YoutubeStreaming : MonoBehaviour
 
     void ScreenOut()
     {
-        if(is_leftscreen)
-            gameObject.transform.position += new Vector3(-0.8f, 0, 0);
+        if (is_leftscreen)
+        {
+            //gameObject.transform.position += new Vector3(-1f, 0, 0);
+            gameObject.transform.localPosition += new Vector3(-0.8f, 0, 0);
+        }
+            
         else
-            gameObject.transform.position += new Vector3(0, 0, 0.8f);
+            gameObject.transform.localPosition += new Vector3(0, 0, 1f);
 
         already_out = true;
     }
