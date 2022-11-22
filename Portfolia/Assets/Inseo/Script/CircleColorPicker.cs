@@ -85,9 +85,10 @@ public class CircleColorPicker : MonoBehaviour
         {
             child.materials[0].color = selectedColor;
             linkedObject = null;
-            MoveBehaviour.Instance.can_move = true;
             transform.gameObject.SetActive(false);
         }
+        MoveBehaviour.Instance.can_move = true;
+        ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
     }
 
 

@@ -28,7 +28,7 @@ public class DoubleClick_Color : MonoBehaviour
             {
                 /* 현재 연결된 오브젝트가 아닌 경우는 끌 수 없음 */
                 if (CircleColorPicker.Instance.linkedObject.name != this.gameObject.name) return;
-                //Cursor.visible = false;
+                Cursor.visible = true;
                 pickerOnOff = false;
                 CircleColorPicker.Instance.gameObject.SetActive(false);
                 CircleColorPicker.Instance.linkedObject = null;
@@ -49,6 +49,7 @@ public class DoubleClick_Color : MonoBehaviour
         if (pickerOnOff)
         {
             ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
+            Cursor.visible = true;
             //print(pickerOnOff);
             CircleColorPicker.Instance.gameObject.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y+2, transform.position.z));
         }
