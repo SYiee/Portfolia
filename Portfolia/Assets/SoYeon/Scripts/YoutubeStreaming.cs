@@ -22,7 +22,6 @@ public class YoutubeStreaming : MonoBehaviour
     VideoPlayer v_player;
 
 
-
     float interval = 0.25f;
     float doubleClickedTime = -1.0f;
     bool isDoubleClicked = false;

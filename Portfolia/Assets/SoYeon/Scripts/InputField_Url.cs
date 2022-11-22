@@ -86,9 +86,6 @@ public class InputField_Url : MonoBehaviour
         ThirdPersonOrbitCamBasic.Instance.can_cam_move = true;
 
         gameObject.SetActive(false);
-        Field_P.Select();
-        Field_P.text = "";
-        str = "";
     }
 
 

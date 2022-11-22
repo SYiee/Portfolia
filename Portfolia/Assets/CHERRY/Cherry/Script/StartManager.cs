@@ -16,6 +16,7 @@ public class StartManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         Player_Transform = Player.transform;
     }
 

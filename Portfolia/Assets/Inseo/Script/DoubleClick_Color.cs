@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DoubleClick_Color : MonoBehaviour
 {
@@ -19,14 +21,14 @@ public class DoubleClick_Color : MonoBehaviour
                 pickerOnOff = true;
                 CircleColorPicker.Instance.gameObject.SetActive(true);
                 CircleColorPicker.Instance.linkedObject = this.gameObject;
-                //ÀÌµ¿ Á¦ÇÑ
+                //ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
                 MoveBehaviour.Instance.can_move = false;
-                //½ÃÁ¡ Á¦ÇÑ
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 ThirdPersonOrbitCamBasic.Instance.can_cam_move = false;
             }
             else
             {
-                /* ÇöÀç ¿¬°áµÈ ¿ÀºêÁ§Æ®°¡ ¾Æ´Ñ °æ¿ì´Â ²ø ¼ö ¾øÀ½ */
+                /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
                 if (CircleColorPicker.Instance.linkedObject.name != this.gameObject.name) return;
                 Cursor.visible = true;
                 pickerOnOff = false;
@@ -54,4 +56,5 @@ public class DoubleClick_Color : MonoBehaviour
             CircleColorPicker.Instance.gameObject.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y+2, transform.position.z));
         }
     }
+
 }
