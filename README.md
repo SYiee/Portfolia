@@ -53,7 +53,7 @@
 
 -------------------------------  
 ## 🎞Trailer Video  
-▶ https://www.youtube.com/watch?v=uSoujnJQdcs
+▶ [https://www.youtube.com/watch?v=uSoujnJQdcs](https://youtu.be/uSoujnJQdcs)
   
 <br/>  
  
